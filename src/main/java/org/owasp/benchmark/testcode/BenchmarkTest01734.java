@@ -83,7 +83,9 @@ public class BenchmarkTest01734 extends HttpServlet {
             javax.xml.xpath.XPathFactory xpf = javax.xml.xpath.XPathFactory.newInstance();
             javax.xml.xpath.XPath xp = xpf.newXPath();
 
-            String expression = "/Employees/Employee[@emplid='" + bar + "']";
+            final String _xpathValue = bar;
+            xp.setXPathVariableResolver(new javax.xml.xpath.XPathVariableResolver() { public Object resolveVariable(javax.xml.namespace.QName name) { return _xpathValue; } });
+            String expression = "/Employees/Employee[@emplid=$emplid]";
             org.w3c.dom.NodeList nodeList =
                     (org.w3c.dom.NodeList)
                             xp.compile(expression)

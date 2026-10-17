@@ -55,7 +55,7 @@ public class BenchmarkTest00327 extends HttpServlet {
         String bar = thing.doSomething(param);
 
         // javax.servlet.http.HttpSession.setAttribute(java.lang.String,java.lang.Object^)
-        request.getSession().setAttribute("userid", bar);
+        request.getSession().setAttribute("userid", org.owasp.esapi.ESAPI.encoder().encodeForHTML(bar));
 
         response.getWriter()
                 .println(

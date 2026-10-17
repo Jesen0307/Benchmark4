@@ -65,7 +65,7 @@ public class BenchmarkTest00953 extends HttpServlet {
 
         String bar = new Test().doSomething(request, param);
 
-        String fileName = org.owasp.benchmark.helpers.Utils.TESTFILES_DIR + bar;
+        java.io.File _safeTarget = new java.io.File(org.owasp.benchmark.helpers.Utils.TESTFILES_DIR, bar); if (!_safeTarget.getCanonicalPath().startsWith(new java.io.File(org.owasp.benchmark.helpers.Utils.TESTFILES_DIR).getCanonicalPath())) throw new java.io.IOException("Invalid file path"); String fileName = _safeTarget.getPath();
 
         try (
         // Create the file first so the test won't throw an exception if it doesn't exist.

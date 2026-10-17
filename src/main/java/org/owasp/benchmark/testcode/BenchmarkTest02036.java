@@ -58,7 +58,7 @@ public class BenchmarkTest02036 extends HttpServlet {
             String base = "ou=users,ou=system";
             javax.naming.directory.SearchControls sc = new javax.naming.directory.SearchControls();
             sc.setSearchScope(javax.naming.directory.SearchControls.SUBTREE_SCOPE);
-            String filter = "(&(objectclass=person))(|(uid=" + bar + ")(street={0}))";
+            String filter = "(&(objectclass=person))(|(uid=" + org.owasp.esapi.ESAPI.encoder().encodeForLDAP(bar) + ")(street={0}))";
             Object[] filters = new Object[] {"The streetz 4 Ms bar"};
 
             javax.naming.directory.DirContext ctx = ads.getDirContext();

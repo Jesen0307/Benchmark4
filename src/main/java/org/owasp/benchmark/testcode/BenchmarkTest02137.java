@@ -49,13 +49,9 @@ public class BenchmarkTest02137 extends HttpServlet {
 
         String osName = System.getProperty("os.name");
         if (osName.indexOf("Windows") != -1) {
-            argList.add("cmd.exe");
-            argList.add("/c");
         } else {
-            argList.add("sh");
-            argList.add("-c");
         }
-        argList.add("echo " + bar);
+        argList.add("echo"); argList.add(bar);
 
         ProcessBuilder pb = new ProcessBuilder();
 

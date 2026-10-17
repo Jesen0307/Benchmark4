@@ -62,7 +62,7 @@ public class BenchmarkTest00251 extends HttpServlet {
         if (param != null) bar = param.split(" ")[0];
 
         // javax.servlet.http.HttpSession.putValue(java.lang.String,java.lang.Object^)
-        request.getSession().putValue("userid", bar);
+        request.getSession().putValue("userid", org.owasp.esapi.ESAPI.encoder().encodeForHTML(bar));
 
         response.getWriter()
                 .println(

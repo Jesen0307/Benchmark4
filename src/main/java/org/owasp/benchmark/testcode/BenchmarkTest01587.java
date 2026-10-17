@@ -49,7 +49,7 @@ public class BenchmarkTest01587 extends HttpServlet {
 
         response.setHeader("X-XSS-Protection", "0");
         Object[] obj = {"a", "b"};
-        response.getWriter().printf(java.util.Locale.US, bar, obj);
+        response.getWriter().printf(java.util.Locale.US, "%s", org.owasp.esapi.ESAPI.encoder().encodeForHTML(bar));
     } // end doPost
 
     private class Test {

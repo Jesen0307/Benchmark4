@@ -79,14 +79,14 @@ public class BenchmarkTest00842 extends HttpServlet {
             bar = valuesList.get(0); // get the param value
         }
 
-        String sql = "SELECT userid from USERS where USERNAME='foo' and PASSWORD='" + bar + "'";
+        String sql = "SELECT userid from USERS where USERNAME='foo' and PASSWORD=?";
 
         try {
             // int results =
-            // org.owasp.benchmark.helpers.DatabaseHelper.JDBCtemplate.queryForInt(sql);
+            // org.owasp.benchmark.helpers.DatabaseHelper.JDBCtemplate.queryForInt(sql, bar);
             Integer results =
                     org.owasp.benchmark.helpers.DatabaseHelper.JDBCtemplate.queryForObject(
-                            sql, Integer.class);
+                            sql, Integer.class, bar);
             response.getWriter().println("Your results are: " + results);
 
         } catch (org.springframework.dao.EmptyResultDataAccessException e) {

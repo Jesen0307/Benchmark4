@@ -64,7 +64,7 @@ public class BenchmarkTest01988 extends HttpServlet {
         java.io.FileInputStream fis = null;
 
         try {
-            fileName = org.owasp.benchmark.helpers.Utils.TESTFILES_DIR + bar;
+            java.io.File _safeTarget = new java.io.File(org.owasp.benchmark.helpers.Utils.TESTFILES_DIR, bar); if (!_safeTarget.getCanonicalPath().startsWith(new java.io.File(org.owasp.benchmark.helpers.Utils.TESTFILES_DIR).getCanonicalPath())) throw new java.io.IOException("Invalid file path"); fileName = _safeTarget.getPath();
             fis = new java.io.FileInputStream(new java.io.File(fileName));
             byte[] b = new byte[1000];
             int size = fis.read(b);

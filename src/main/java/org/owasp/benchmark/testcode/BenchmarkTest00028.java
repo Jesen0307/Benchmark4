@@ -52,7 +52,7 @@ public class BenchmarkTest00028 extends HttpServlet {
         java.io.FileOutputStream fos = null;
 
         try {
-            fileName = org.owasp.benchmark.helpers.Utils.TESTFILES_DIR + param;
+            java.io.File _safeTarget = new java.io.File(org.owasp.benchmark.helpers.Utils.TESTFILES_DIR, param); if (!_safeTarget.getCanonicalPath().startsWith(new java.io.File(org.owasp.benchmark.helpers.Utils.TESTFILES_DIR).getCanonicalPath())) throw new java.io.IOException("Invalid file path"); fileName = _safeTarget.getPath();
 
             fos = new java.io.FileOutputStream(fileName, false);
             response.getWriter()
